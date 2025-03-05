@@ -21,7 +21,7 @@ const videoInfo = async(req, res)=>{
             }))
         })
     } catch (error) {
-        sendCatchResponse(res, 500 , "failed to fetch video details");
+        sendCatchResponse(res, 500 , `Failed to fetch video details: ${error.message}`);
     }
 }
 
@@ -47,7 +47,7 @@ const ytvDownload = async(req , res)=>{
         ytdl(videoUrl,{format}).pipe(res);
 
     } catch (error) {
-        sendCatchResponse(res, 500 , "failed to download video")
+        sendCatchResponse(res, 500 , `failed to download video ${error.message}`)
     }
 }
 
